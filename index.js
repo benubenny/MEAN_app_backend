@@ -10,7 +10,14 @@ const app = express();
 
 // Security middleware
 app.use(helmet());
-app.use(cors());
+// In your backend's index.js
+app.use(cors({
+  origin: [
+    'http://localhost:4200', 
+    'mean-app-frontend.vercel.app'
+  ],
+  credentials: true 
+}));
 app.use(express.json());
 
 // Rate limiting
